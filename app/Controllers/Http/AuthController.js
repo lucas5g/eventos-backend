@@ -11,6 +11,7 @@ class AuthController {
        // const token = { username, password}
         const token = await auth.attempt(username, password)
         const user = await Database.from('users').where({ username })
+        
         token.name = user[0].name
         return token
     }
