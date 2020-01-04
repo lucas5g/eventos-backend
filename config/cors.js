@@ -21,7 +21,7 @@ module.exports = {
     return currentOrigin === 'localhost:3000'
   },
   /** */
-  origin: ['http://localhost:3000'],
+  origin: ['http://localhost:3000', 'https://eventos-csa.netlify.com'],
 
 
   /*

@@ -30,7 +30,13 @@ Route.group(() => {
     Route.resource('/profiles', 'ProfileController').apiOnly()
     Route.resource('/students', 'StudentController').apiOnly()
     Route.resource('/invitations', 'InvitationController').apiOnly()
-    Route.resource('/studentInvitations', 'StudentInvitationController').apiOnly()
+    Route.get('/studentInvitations/:filter', 'StudentInvitationController.filter')
+    Route.get('/studentInvitations', 'StudentInvitationController.index')
+    Route.post('/studentInvitations', 'StudentInvitationController.store')
+    
+    
+    //Route.resource('/studentInvitations', 'StudentInvitationController').apiOnly()
+
 }).middleware('auth')
 
 

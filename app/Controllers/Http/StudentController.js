@@ -9,11 +9,12 @@ class StudentController {
      *
      */
 	async index() {
-		const students = Database.table('students')
+		const students = Database.table('students').limit(6)
 
 		return students
 	}
 
+ 
     /**
      * Create/save a new student.
      * POST students

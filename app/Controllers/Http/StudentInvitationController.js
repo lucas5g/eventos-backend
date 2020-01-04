@@ -16,7 +16,7 @@ class StudentInvitationController {
         //todos alunos com e sem convites
         const si = await Database
             .select('si.created_at')
-            .select('s.name', 's.ra')
+            .select('s.name', 's.ra', 's.father', 's.mother')
             .select('i.id', 'i.name as invitation')
             .from('studentInvitations as si')
             .rightJoin('students as s','s.ra', 'si.ra')
@@ -26,6 +26,29 @@ class StudentInvitationController {
 
         
         return si
+    }
+
+    async filter({ params }) {
+        //todos alunos com e sem convites
+        let { filter } = params
+
+        filter = decodeURI(filter)
+           
+        const si = await Database
+            .select('si.created_at')
+            .select('s.name', 's.ra', 's.father', 's.mother')
+            .select('i.id', 'i.name as invitation')
+            .from('studentInvitations as si')
+            .rightJoin('students as s','s.ra', 'si.ra')
+            .leftJoin('invitations as i', 'i.id', 'si.invitation_id')
+            .whereRaw(`s.name LIKE '%${filter}%'`)
+            .orderBy('s.name', 'asc')
+            .limit(10)
+            .on('query', console.log)
+        /**/
+        
+        return si
+
     }
 
     /**
