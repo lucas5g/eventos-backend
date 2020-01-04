@@ -34,6 +34,7 @@ Route.group(() => {
     Route.get('/studentInvitations', 'StudentInvitationController.index')
     Route.post('/studentInvitations', 'StudentInvitationController.store')
     
+    //create new route    
     
     //Route.resource('/studentInvitations', 'StudentInvitationController').apiOnly()
 
