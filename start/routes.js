@@ -20,6 +20,8 @@ Route.get('/', () => {
 }) 
 
 Route.post('/authenticate', 'AuthController.authenticate')
+Route.get('/teste/:id', 'AuthController.show')
+
 
 Route.get('/authenticate', () =>{
     return {api:'authenticate'}

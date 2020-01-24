@@ -1,7 +1,9 @@
 'use strict'
 
 const User = use('App/Models/User')
-const Database = use('Database')
+//const Database = use('Database')
+const Hash = use('Hash')
+
 
 class AuthController {
 
@@ -10,10 +12,21 @@ class AuthController {
         
        // const token = { username, password}
         const token = await auth.attempt(username, password)
-        const user = await Database.from('users').where({ username })
-        
-        token.name = user[0].name
+               
+        token.username =  username
         return token
+    }
+
+    async show({ params }){
+        const { id } = params
+        let password = await Hash.make('Sic7c8sic')
+
+        const user = await User.query().where('id', id)
+            .update({password:password})
+
+
+
+        return user
     }
 }
 
