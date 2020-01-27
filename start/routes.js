@@ -30,10 +30,14 @@ Route.get('/authenticate', () =>{
 Route.group(() => {
     Route.resource('/users', 'UserController').apiOnly()
     Route.resource('/profiles', 'ProfileController').apiOnly()
-    Route.resource('/students', 'StudentController').apiOnly()
+    //Route.resource('/students', 'StudentController').apiOnly()
     Route.resource('/invitations', 'InvitationController').apiOnly()
-    Route.get('/studentInvitations/:filter', 'StudentInvitationController.filter')
-    Route.get('/studentInvitations', 'StudentInvitationController.index')
+    Route.get('/students', 'StudentController.index')
+    Route.get('/students/:ra', 'StudentController.show')
+    Route.get('/students/search/:search', 'StudentController.search')
+    //Route.get('/students/:ra', '')
+    //Route.get('/studentInvitations/:filter', 'StudentInvitationController.filter')
+    //Route.get('/studentInvitations', 'StudentInvitationController.index')
     Route.post('/studentInvitations', 'StudentInvitationController.store')
     
     //create new route    
